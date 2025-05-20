@@ -62,6 +62,10 @@ class AdminTransaction extends BaseWidget
                     'onclick' => 'showImage("'. asset('storage/payment_proofs/{record.payment_proof}') . '")',
                     'style' => 'cursor: pointer;',
                 ]),
+                Tables\Columns\TextColumn::make('payment_date')
+                    ->label('Tanggal Bayar')
+                    ->date()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('department.cost') // Ganti 'departments' menjadi 'department'
                     ->label('Cost')
                     ->money('IDR'), // Format sebagai uang

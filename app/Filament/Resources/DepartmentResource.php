@@ -48,6 +48,16 @@ class DepartmentResource extends Resource
                         'Desember' => 'Desember',
                     ])
                     ->placeholder('Pilih Bulan'),
+                Forms\Components\Select::make('academic_year')
+                        ->options([
+                            '2024/2025' => '2024/2025',
+                            '2025/2026' => '2025/2026',
+                            '2026/2027' => '2026/2027',
+                        ])
+                        ->required(),
+                Forms\Components\DatePicker::make('due_date')
+                        ->label('Jatuh Tempo')
+                        ->required(),
             ]);
     }
 
@@ -63,6 +73,14 @@ class DepartmentResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('month')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('academic_year')
+                    ->label('Tahun Ajaran')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('due_date')
+                    ->label('Jatuh Tempo')
+                    ->date('d M Y') // Format: 20 Mei 2025
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

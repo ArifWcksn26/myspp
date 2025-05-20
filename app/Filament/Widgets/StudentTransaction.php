@@ -60,6 +60,10 @@ class StudentTransaction extends BaseWidget
                     ->label('Bukti Pembayaran')
                     ->width(150)
                     ->height(75),
+                Tables\Columns\TextColumn::make('payment_date')
+                    ->label('Tanggal Bayar')
+                    ->date()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('departments.cost')
                     ->label('Cost')
                     ->money('IDR'),

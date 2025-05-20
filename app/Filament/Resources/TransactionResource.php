@@ -33,6 +33,8 @@ class TransactionResource extends Resource
                 Forms\Components\TextInput::make('payment_status')
                     ->readOnly()
                     ->default('pending'),
+                Forms\Components\DatePicker::make('payment_date')
+                    ->required(),
                 Forms\Components\Fieldset::make('Department')
                     ->schema([
                         Forms\Components\Select::make('department_id')
@@ -93,6 +95,11 @@ class TransactionResource extends Resource
                     ->label('Bukti Pembayaran')
                     ->width(150)  // Set the width of the preview
                     ->height(75),
+                Tables\Columns\TextColumn::make('payment_date')
+                    ->label('Tanggal Bayar')
+                    ->date()
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('department.cost')
                     ->label('Cost')
                     ->money('IDR') // Format sebagai uang

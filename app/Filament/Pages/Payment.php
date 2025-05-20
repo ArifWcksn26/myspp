@@ -78,9 +78,11 @@ class Payment extends Page
     }
 
     // Update transaksi
-    $this->transaction->update([
+      $this->transaction->update([
         'payment_method' => $validatedData['payment_method'],
         'payment_proof' => $validatedData['payment_proof'],
+        'payment_date' => now(), // ⬅️ Tambahkan ini!
+        'payment_status' => 'pending', // pastikan status tetap pending
     ]);
 
     // Kirim notifikasi
