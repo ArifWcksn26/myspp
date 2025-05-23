@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use BezhanSalleh\FilamentShield\Traits\HasPageShield; 
 use App\Models\Transaction;
 use Filament\Pages\Page;
 use Filament\Tables\Table;
@@ -12,6 +13,7 @@ use Filament\Tables\Filters\Filter;
 
 class TransactionReport extends Page implements Tables\Contracts\HasTable
 {
+    use HasPageShield;
     use Tables\Concerns\InteractsWithTable;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
@@ -65,6 +67,6 @@ class TransactionReport extends Page implements Tables\Contracts\HasTable
                         'success' => 'Success',
                         'failed' => 'Failed',
                     ])
-            ]);
+            ]);       
     }
 }

@@ -29,7 +29,7 @@ class AdminTransaction extends BaseWidget
             )
             ->columns([
                 Tables\Columns\TextColumn::make('code')
-                    ->label('Transaction Code')
+                    ->label('TRX Code')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('student.nama')
                     ->label('Student')

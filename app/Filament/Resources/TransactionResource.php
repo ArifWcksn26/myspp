@@ -65,6 +65,7 @@ class TransactionResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('code')
+                    ->label('TRX Code')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('student.nama')
                     ->label('Student')

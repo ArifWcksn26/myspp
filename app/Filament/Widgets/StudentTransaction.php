@@ -30,7 +30,7 @@ class StudentTransaction extends BaseWidget
                 ->orderBy('created_at', 'DESC'))
             ->columns([
                 Tables\Columns\TextColumn::make('code')
-                    ->label('Transaction Code')
+                    ->label('TRX Code')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('student.nama')
                     ->label('Student')
@@ -77,6 +77,13 @@ class StudentTransaction extends BaseWidget
                     ->icon('heroicon-o-credit-card')
                     ->url(fn ($record) => url("admin/payment/{$record->id}"))
                     ->visible(fn ($record) => $record->payment_status === 'pending'),
+            
+                Tables\Actions\Action::make('Download Invoice')
+                    ->label('Invoice')
+                    ->icon('heroicon-o-printer')
+                    ->url(fn ($record) => route('invoice.download', $record->id))
+                    ->openUrlInNewTab() // agar dibuka di tab baru
+                    ->visible(fn ($record) => $record->payment_status === 'success'),
             ]);
     }
 }
